@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Descarga esta herramienta para el mejor rendimiento en Windows 10</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            color: #003366;
+            background: #e6f7ff;
+            line-height: 1.6;
+            padding: 0 1rem;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Asegura que el body ocupe al menos el 100% de la altura de la ventana */
+        }
+
+        .header {
+            background: #003366;
+            color: #fff;
+            padding: 1.5rem 0;
+            text-align: center;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 0 0 10px 10px;
+        }
+
+        .container {
+            flex: 1; /* Permite que el contenedor crezca y ocupe el espacio disponible */
+            max-width: 1200px; /* Limita el ancho para dispositivos grandes */
+            margin: 0 auto;
+        }
+
+        .systems {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .system-card {
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            padding: 1.5rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .system-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .system-card h2 {
+            color: #1d72b8;
+            margin-bottom: 0.5rem;
+            font-size: 1.4rem;
+        }
+
+        .system-card p {
+            color: #333;
+            margin: 0.5rem 0;
+            font-size: 1rem;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.6rem 1.2rem;
+            background-color: #1d72b8;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.3s;
+            font-weight: bold;
+        }
+
+        a:hover {
+            background-color: #155a8b;
+            transform: scale(1.05);
+        }
+
+        footer {
+            background: #003366;
+            color: #fff;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 2rem;
+            border-radius: 10px 10px 0 0;
+        }
+
+        /* Media Queries para hacer la página más responsiva */
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size: 1.5rem;
+            }
+
+            .system-card {
+                padding: 1rem;
+            }
+
+            .system-card h2 {
+                font-size: 1.2rem;
+            }
+
+            .system-card p {
+                font-size: 0.9rem;
+            }
+
+            a {
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+            }
+
+            footer p {
+                font-size: 0.9rem;
+            }
+        }
+        
+        @media (max-width: 400px) {
+            .header h1 {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header" role="banner">
+        <h1>Descarga la mejor herramientas para optimizar Windows 10</h1>
+    </header>
+
+    <div class="container">
+        <div class="systems" role="main">
+            <div class="system-card" tabindex="0">
+                <h2>Optimizer</h2>
+                <p>Mejora el rendimiento de tu Windows 10.</p>
+                <a href="https://github.com/hellzerg/optimizer/releases" download aria-label="Descargar optimizer.exe">Descargar optimizer.exe</a>
+            </div>
+        </div>
+    </div>
+
+    <footer role="contentinfo">
+        <p>&copy; 2024 Herramientas de Optimización</p>
+    </footer>
+
+</body>
+</html>
