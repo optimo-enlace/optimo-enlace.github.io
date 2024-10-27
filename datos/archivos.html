@@ -105,35 +105,22 @@
             top: 0;
             width: 100%;
             height: 100%;
-            overflow: auto;
             background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
         }
 
         .modal-content {
             background-color: #fefefe;
-            margin: 15% auto;
             padding: 20px;
-            border: 1px solid #888;
-            width: 300px;
-            text-align: center;
+            width: 90%;
+            max-width: 320px;
             border-radius: 10px;
+            text-align: center;
+            position: relative;
         }
 
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-        }
-
-        .close:hover,
-        .close:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
-        }
-
-        /* Media Queries para hacer la página más responsiva */
+        /* Media Queries */
         @media (max-width: 600px) {
             .header h1 {
                 font-size: 1.5rem;
@@ -191,10 +178,19 @@
     <!-- Modal -->
     <div id="myModal" class="modal">
         <div class="modal-content">
-            <span class="close">&times;</span>
             <h2>¡Descarga en progreso!</h2>
             <p>Tu descarga comenzará en:</p>
             <div id="countdown" style="font-size: 24px; font-weight: bold;">10</div>
+            <script type="text/javascript">
+                atOptions = {
+                    'key' : '8d5ef73c34dfec6e5844e580b9208b33',
+                    'format' : 'iframe',
+                    'height' : 250,
+                    'width' : 300,
+                    'params' : {}
+                };
+            </script>
+            <script type="text/javascript" src="//www.highperformanceformat.com/8d5ef73c34dfec6e5844e580b9208b33/invoke.js"></script>
         </div>
     </div>
 
@@ -202,14 +198,13 @@
         // Obtener el modal
         var modal = document.getElementById("myModal");
         var btn = document.getElementById("downloadBtn");
-        var span = document.getElementsByClassName("close")[0];
         var countdownElement = document.getElementById("countdown");
         var countdown = 10; // Tiempo en segundos
 
         // Al hacer clic en el botón de descarga
         btn.onclick = function(event) {
             event.preventDefault(); // Prevenir el comportamiento por defecto del enlace
-            modal.style.display = "block"; // Mostrar el modal
+            modal.style.display = "flex"; // Mostrar el modal como flex para centrar
             startCountdown();
         }
 
@@ -225,20 +220,6 @@
                     window.location.href = "https://github.com/hellzerg/optimizer/releases"; // Enlace de descarga
                 }
             }, 1000); // Cada segundo
-        }
-
-        // Al hacer clic en el botón de cerrar
-        span.onclick = function() {
-            modal.style.display = "none"; // Ocultar el modal
-            countdown = 10; // Reiniciar el contador
-        }
-
-        // Cerrar el modal si se hace clic fuera de él
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none"; // Ocultar el modal
-                countdown = 10; // Reiniciar el contador
-            }
         }
     </script>
 
