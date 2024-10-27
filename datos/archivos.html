@@ -19,7 +19,7 @@
             padding: 0 1rem;
             display: flex;
             flex-direction: column;
-            min-height: 100vh; /* Asegura que el body ocupe al menos el 100% de la altura de la ventana */
+            min-height: 100vh;
         }
 
         .header {
@@ -32,8 +32,8 @@
         }
 
         .container {
-            flex: 1; /* Permite que el contenedor crezca y ocupe el espacio disponible */
-            max-width: 1200px; /* Limita el ancho para dispositivos grandes */
+            flex: 1;
+            max-width: 1200px;
             margin: 0 auto;
         }
 
@@ -96,6 +96,43 @@
             border-radius: 10px 10px 0 0;
         }
 
+        /* Modal Styles */
+        .modal {
+            display: none; /* Oculto por defecto */
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 300px;
+            text-align: center;
+            border-radius: 10px;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
         /* Media Queries para hacer la página más responsiva */
         @media (max-width: 600px) {
             .header h1 {
@@ -123,7 +160,7 @@
                 font-size: 0.9rem;
             }
         }
-        
+
         @media (max-width: 400px) {
             .header h1 {
                 font-size: 1.2rem;
@@ -134,7 +171,7 @@
 <body>
 
     <header class="header" role="banner">
-        <h1>Descarga la mejor herramientas para optimizar Windows 10</h1>
+        <h1>Descarga la mejor herramienta para optimizar Windows 10</h1>
     </header>
 
     <div class="container">
@@ -142,7 +179,7 @@
             <div class="system-card" tabindex="0">
                 <h2>Optimizer</h2>
                 <p>Mejora el rendimiento de tu Windows 10.</p>
-                <a href="https://github.com/hellzerg/optimizer/releases" download aria-label="Descargar optimizer.exe">Descargar optimizer.exe</a>
+                <a href="#" id="downloadBtn" aria-label="Descargar optimizer.exe">Descargar optimizer.exe</a>
             </div>
         </div>
     </div>
@@ -150,6 +187,60 @@
     <footer role="contentinfo">
         <p>&copy; 2024 Herramientas de Optimización</p>
     </footer>
+
+    <!-- Modal -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>¡Descarga en progreso!</h2>
+            <p>Tu descarga comenzará en:</p>
+            <div id="countdown" style="font-size: 24px; font-weight: bold;">10</div>
+        </div>
+    </div>
+
+    <script>
+        // Obtener el modal
+        var modal = document.getElementById("myModal");
+        var btn = document.getElementById("downloadBtn");
+        var span = document.getElementsByClassName("close")[0];
+        var countdownElement = document.getElementById("countdown");
+        var countdown = 10; // Tiempo en segundos
+
+        // Al hacer clic en el botón de descarga
+        btn.onclick = function(event) {
+            event.preventDefault(); // Prevenir el comportamiento por defecto del enlace
+            modal.style.display = "block"; // Mostrar el modal
+            startCountdown();
+        }
+
+        // Función para el conteo regresivo
+        function startCountdown() {
+            var interval = setInterval(function() {
+                countdown--;
+                countdownElement.textContent = countdown;
+
+                // Cuando el conteo llegue a 0, redirigir a la descarga
+                if (countdown <= 0) {
+                    clearInterval(interval);
+                    window.location.href = "https://github.com/hellzerg/optimizer/releases"; // Enlace de descarga
+                }
+            }, 1000); // Cada segundo
+        }
+
+        // Al hacer clic en el botón de cerrar
+        span.onclick = function() {
+            modal.style.display = "none"; // Ocultar el modal
+            countdown = 10; // Reiniciar el contador
+        }
+
+        // Cerrar el modal si se hace clic fuera de él
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none"; // Ocultar el modal
+                countdown = 10; // Reiniciar el contador
+            }
+        }
+    </script>
 
 </body>
 </html>

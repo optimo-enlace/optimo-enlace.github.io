@@ -6,7 +6,6 @@
     <title>Optimo Enlace - Selección de Sistemas</title>
     <meta name="description" content="Explora las opciones de sistemas optimizados: MiniOS10, WinterOS10 y KernelOS10. Encuentra el sistema ideal para tu netbook o PC de bajo rendimiento.">
     
-    <!-- CSS Integrado -->
     <style>
         * {
             margin: 0;
@@ -19,89 +18,75 @@
             color: #003366;
             background: #e6f7ff;
             line-height: 1.6;
+            padding: 0 1rem;
             display: flex;
             flex-direction: column;
-            min-height: 100vh; /* Asegura que el body ocupe al menos el 100% de la altura de la ventana */
+            min-height: 100vh;
         }
 
         .header {
             background: #003366;
             color: #fff;
-            padding: 1rem;
+            padding: 1.5rem 0;
             text-align: center;
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 0 0 10px 10px;
         }
 
-        main {
-            flex: 1; /* Permite que el main ocupe el espacio restante */
+        .container {
+            flex: 1;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .systems {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 1rem;
-            padding: 2rem;
+            padding: 2rem 0;
             text-align: center;
         }
 
         .system-card {
             background: #ffffff;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
             padding: 1.5rem;
-            transition: transform 0.3s;
+            transition: transform 0.3s, box-shadow 0.3s;
         }
 
         .system-card:hover {
-            transform: scale(1.05);
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
         }
 
         .system-card h2 {
             color: #1d72b8;
+            margin-bottom: 0.5rem;
+            font-size: 1.4rem;
         }
 
         .system-card p {
             color: #333;
             margin: 0.5rem 0;
-        }
-
-        ul {
-            list-style-type: disc;
-            padding-left: 1.5rem;
-            text-align: left;
-            color: #333;
-        }
-
-        ul li {
-            margin: 0.5rem 0;
+            font-size: 1rem;
         }
 
         a {
             display: inline-block;
             margin-top: 1rem;
-            padding: 0.5rem 1rem;
+            padding: 0.6rem 1.2rem;
             background-color: #1d72b8;
             color: #fff;
             text-decoration: none;
-            border-radius: 4px;
-            transition: background-color 0.3s;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.3s;
+            font-weight: bold;
         }
 
         a:hover {
             background-color: #155a8b;
-        }
-
-        .experience-section {
-            padding: 2rem;
-            text-align: center;
-            background: #f0f8ff;
-            margin-top: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .experience-section h2 {
-            color: #1d72b8;
+            transform: scale(1.05);
         }
 
         footer {
@@ -110,8 +95,104 @@
             text-align: center;
             padding: 1rem;
             margin-top: 2rem;
+            border-radius: 10px 10px 0 0;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none; /* Oculto por defecto */
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 300px;
+            text-align: center;
+            border-radius: 10px;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Media Queries para hacer la página más responsiva */
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size: 1.5rem;
+            }
+
+            .system-card {
+                padding: 1rem;
+            }
+
+            .system-card h2 {
+                font-size: 1.2rem;
+            }
+
+            .system-card p {
+                font-size: 0.9rem;
+            }
+
+            a {
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+            }
+
+            footer p {
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .header h1 {
+                font-size: 1.2rem;
+            }
         }
     </style>
+
+    <script>
+        function startCountdown(url) {
+            // Mostrar el modal
+            const modal = document.getElementById('modal');
+            modal.style.display = 'flex';
+            
+            // Configurar el contador
+            let countdown = 10;
+            const countdownElement = document.getElementById('countdown');
+            countdownElement.innerHTML = `Esperando ${countdown} segundos para redirigir...`;
+            
+            // Iniciar el intervalo
+            const interval = setInterval(() => {
+                countdown--;
+                countdownElement.innerHTML = `Esperando ${countdown} segundos para redirigir...`;
+                
+                if (countdown === 0) {
+                    clearInterval(interval);
+                    window.location.href = url;
+                }
+            }, 1000);
+        }
+    </script>
 </head>
 <body>
     <header class="header">
@@ -135,7 +216,7 @@
                     <li>Opciones limitadas para personalización</li>
                     <li>No recomendado para software de alto rendimiento</li>
                 </ul>
-                <a href="https://www.mediafire.com/file/wa82gjjcjl2w0vh/MiniOS10+LTSB+v2024.09+x64+-+www.dprojects.org.rar/file" target="_blank">Descargar MiniOS10</a>
+                <a href="#" onclick="startCountdown('https://www.mediafire.com/file/wa82gjjcjl2w0vh/MiniOS10+LTSB+v2024.09+x64+-+www.dprojects.org.rar/file')">Descargar MiniOS10</a>
             </div>
 
             <div class="system-card">
@@ -152,7 +233,7 @@
                     <li>No es ideal para climas cálidos o dispositivos que se calientan rápido</li>
                     <li>Mayor consumo de RAM que MiniOS10</li>
                 </ul>
-                <a href="https://www.mediafire.com/file/cqax5bqectgdqpi/22H2x64W10Rev11.iso/file" target="_blank">Descargar WinterOS10</a>
+                <a href="#" onclick="startCountdown('https://www.mediafire.com/file/cqax5bqectgdqpi/22H2x64W10Rev11.iso/file')">Descargar WinterOS10</a>
             </div>
 
             <div class="system-card">
@@ -169,19 +250,39 @@
                     <li>Requiere conocimientos técnicos para aprovechar su potencial</li>
                     <li>Configuraciones avanzadas pueden ser complejas para principiantes</li>
                 </ul>
-                <a href="https://github.com/Velytics/KernelOS" target="_blank">Descargar KernelOS10</a>
+                <a href="#" onclick="startCountdown('https://github.com/Velytics/KernelOS')">Descargar KernelOS10</a>
             </div>
         </section>
 
         <section class="experience-section">
             <h2>Para usuarios con más experiencia</h2>
             <p>Próximamente Minecraft en Loc-OS Linux para el mejor rendimiento.</p>
-            <a href="https://loc-os.com/" target="_blank">Descargar Loc-OS</a>
+            <a href="#" onclick="startCountdown('https://loc-os.com/')">Descargar Loc-OS</a>
         </section>
     </main>
 
     <footer>
         <p>&copy; 2024 Optimo Enlace. Todos los derechos reservados.</p>
     </footer>
+
+    <!-- Modal con contador y anuncio -->
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <!-- Código del anuncio -->
+            <script type="text/javascript">
+                atOptions = {
+                    'key' : 'db6bcbe0a2420b0f6fe82d64f3c3d63d',
+                    'format' : 'iframe',
+                    'height' : 50,
+                    'width' : 320,
+                    'params' : {}
+                };
+            </script>
+            <script type="text/javascript" src="//www.highperformanceformat.com/db6bcbe0a2420b0f6fe82d64f3c3d63d/invoke.js"></script>
+
+            <!-- Contador -->
+            <p id="countdown" class="countdown"></p>
+        </div>
+    </div>
 </body>
 </html>
